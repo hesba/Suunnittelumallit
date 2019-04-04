@@ -5,19 +5,32 @@
  */
 package state;
 
+import main.Pokemon;
+
 
 /**
  *
  * @author Heikki
  */
-public class Charmeleon implements PokemonState {
+public class Charmeleon extends PokemonState {
+    
+    private static Charmeleon INSTANCE;
     private final double weight = 19.0;
     private final double height = 1.1;
 
+    private Charmeleon() {}
+    
+    public static synchronized Charmeleon getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Charmeleon();
+        }
+        return INSTANCE;
+    }
+    
     @Override
-    public void evolve(main.Pokemon pokemon) {
-        pokemon.setpState(new Charizard());
-        System.out.println("Pokemon has evolved.");
+    public boolean evolve(Pokemon pokemon) {
+        super.changeState(pokemon, Charizard.getInstance());
+        return true;
     }
 
     @Override
@@ -31,7 +44,7 @@ public class Charmeleon implements PokemonState {
     }
 
     @Override
-    public void pokemonStatus() {
-        System.out.println("Charmeleon");
+    public String toString() {
+        return "Charmeleon";
     }
 }

@@ -1,5 +1,7 @@
 package main;
 
+import state.Charmander;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,18 +20,19 @@ public class main {
      */
     public static void main(String[] args) {
         
-        Pokemon pokemon = new Pokemon();
+        Pokemon pokemon = new Pokemon(Charmander.getInstance());
         
-        pokemon.pokemonStatus();
+        main.print(pokemon);
+        for (int i = 1; i < 3; i++) {
+            pokemon.evolve();
+            main.print(pokemon);
+        }   
+    }
+
+    private static void print(Pokemon pokemon) {
+        System.out.println("Name: " + pokemon.getName());
         System.out.println("Height: " + pokemon.getHeight());
         System.out.println("Weight: " + pokemon.getWeight());
-        
-        for (int i = 0; i < 2; i++) {
-            pokemon.evolve();
-            pokemon.pokemonStatus();
-            System.out.println("Height: " + pokemon.getHeight());
-            System.out.println("Weight: " + pokemon.getWeight());
-        }   
     }
     
 }

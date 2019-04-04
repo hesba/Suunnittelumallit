@@ -7,17 +7,21 @@ package state;
 
 import main.Pokemon;
 
-
-
 /**
  *
  * @author Heikki
  */
-public interface PokemonState {
+public abstract class PokemonState {
     
-    void evolve(Pokemon pokemon);
-    double getHeight();
-    double getWeight();
-    void pokemonStatus();
+    public abstract boolean evolve(Pokemon pokemon);
+    public abstract double getHeight();
+    public abstract double getWeight();
     
+    public String getName() {
+        return this.toString();
+    }
+    
+    void changeState(Pokemon pokemon, PokemonState pokemonState) {
+        pokemon.changeState(pokemonState);
+    }
 }

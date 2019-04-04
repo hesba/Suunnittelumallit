@@ -5,7 +5,6 @@
  */
 package main;
 
-import state.Charmander;
 import state.PokemonState;
 
 /**
@@ -14,18 +13,17 @@ import state.PokemonState;
  */
 public class Pokemon {
     
-    private PokemonState pState = new Charmander();
-        
-    public void evolve() {
-        pState.evolve(this);
-    }
+    private PokemonState pState;
     
-    public void pokemonStatus() {
-        pState.pokemonStatus();
+    public Pokemon(PokemonState pokemonState) {
+        pState = pokemonState;
     }
-
-    public void setpState(PokemonState pState) {
-        this.pState = pState;
+    public void changeState(PokemonState pokemonState) {
+        pState = pokemonState;
+    }
+        
+    public boolean evolve() {
+        return pState.evolve(this);
     }
     
     public double getHeight() {
@@ -34,6 +32,10 @@ public class Pokemon {
 
     public double getWeight() {
         return pState.getWeight();
+    }
+    
+    public String getName() {
+        return pState.getName();
     }
     
 }

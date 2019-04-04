@@ -5,21 +5,33 @@
  */
 package state;
 
+import main.Pokemon;
+
 
 
 /**
  *
  * @author Heikki
  */
-public class Charmander implements PokemonState {
+public class Charmander extends PokemonState {
     
+    private static Charmander INSTANCE;
     private final double weight = 8.5;
     private final double height = 0.6;
 
+    private Charmander() {}
+    
+    public static synchronized Charmander getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Charmander();
+        }
+        return INSTANCE;
+    }
+    
     @Override
-    public void evolve(main.Pokemon pokemon) {
-        pokemon.setpState(new Charmeleon());
-        System.out.println("Pokemon has evolved.");
+    public boolean evolve(Pokemon pokemon) {
+        super.changeState(pokemon, Charmeleon.getInstance());
+        return true;
     }
 
     @Override
@@ -33,8 +45,8 @@ public class Charmander implements PokemonState {
     }
 
     @Override
-    public void pokemonStatus() {
-        System.out.println("Charmander");
+    public String toString() {
+        return "Charmander";
     }
 }
     

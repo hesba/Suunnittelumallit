@@ -13,15 +13,24 @@ import main.Pokemon;
  *
  * @author Heikki
  */
-public class Charizard implements PokemonState {
+public class Charizard extends PokemonState {
     
+    private static Charizard INSTANCE;
     private final double weight = 90.5;
     private final double height = 1.7;
 
+    private Charizard() {}
+    
+    public static synchronized Charizard getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Charizard();
+        }
+        return INSTANCE;
+    }
+    
     @Override
-    public void evolve(Pokemon pokemon) {
-        pokemon.setpState(this);
-        System.out.println("Pokemon has evolved.");
+    public boolean evolve(Pokemon pokemon) {
+        return false;
     }
 
     @Override
@@ -35,7 +44,7 @@ public class Charizard implements PokemonState {
     }
 
     @Override
-    public void pokemonStatus() {
-        System.out.println("Charizard");
+    public String toString() {
+        return "Charizard";
     }
 }
