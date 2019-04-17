@@ -15,6 +15,7 @@ import visitors.Visitor;
 public class GymRat implements HumanState {
     
     private Human human;
+    private final int benches = 120;
     
     public GymRat(Human human) {
         this.human = human;
@@ -27,7 +28,7 @@ public class GymRat implements HumanState {
 
     @Override
     public void exercise() {
-        System.out.println(toString() + " works hard every day and is becoming super muscular!");
+        System.out.println(toString() + " works hard every day and is becoming super muscular! Benches: " + benches + " kg");
     }
 
     @Override

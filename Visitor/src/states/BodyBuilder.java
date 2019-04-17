@@ -15,6 +15,7 @@ import visitors.Visitor;
 public class BodyBuilder implements HumanState {
     
     private Human human;
+    private final int benches = 200;
     
     public BodyBuilder(Human human) {
         this.human = human;
@@ -27,7 +28,7 @@ public class BodyBuilder implements HumanState {
 
     @Override
     public void exercise() {
-        System.out.println(toString() + " works out everyday & night and get's on the stage to get money and fame.");
+        System.out.println(toString() + " works out everyday & night and get's on the stage to get money and fame. Benches: " + benches + " kg");
     }
 
     @Override

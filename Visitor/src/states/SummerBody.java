@@ -15,6 +15,7 @@ import visitors.Visitor;
 public class SummerBody implements HumanState {
     
     private Human human;
+    private final int benches = 80;
 
     public SummerBody(Human human) {
         this.human = human;
@@ -27,7 +28,7 @@ public class SummerBody implements HumanState {
 
     @Override
     public void exercise() {
-        System.out.println(toString() + " starts to grow!");
+        System.out.println(toString() + " starts to grow! Benches: " + benches + " kg");
     }
 
     @Override
